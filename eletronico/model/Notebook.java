@@ -11,6 +11,10 @@ public class Notebook extends Eletronico{
 		this.processador = processador;
 		this.placaDeVideo = placaDeVideo;
 	}
+	
+	public Notebook(int numero, float preço) {
+		super(numero, preço);
+	}
 
 
 	public void setProcessador(String processador) {
@@ -22,5 +26,10 @@ public class Notebook extends Eletronico{
 		this.placaDeVideo = placaDeVideo;
 	}
 		
-	
+    @Override
+	public void visualizar() {
+		super.visualizar();
+		System.out.println("Processador: " + this.processador);
+		System.out.println("Placa de Video: " + this.placaDeVideo);
+	}
 }

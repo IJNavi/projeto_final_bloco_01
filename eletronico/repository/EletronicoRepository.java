@@ -9,6 +9,6 @@ public interface EletronicoRepository {
 	public void listarTodos();
 	public void cadastrar(Eletronico eletronico);
 	public void atualizar(Eletronico eletronico);
-	public void Excluir(int numero);
+	public void excluir(int numero);
 
 }

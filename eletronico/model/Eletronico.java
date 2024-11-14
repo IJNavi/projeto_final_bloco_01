@@ -13,6 +13,11 @@ public abstract class Eletronico {
 		this.nome = nome;
 		this.preço = preço;
 	}
+	
+	public Eletronico(int numero, float preço) {
+		this.numero = numero;
+		this.preço = preço;
+	}
 
 	public int getNumero() {
 		return numero;
@@ -21,12 +26,16 @@ public abstract class Eletronico {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
+	
+	public int getTipo() {
+		return tipo;
+	}
 
 
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
-
+	
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -37,6 +46,9 @@ public abstract class Eletronico {
 		this.preço = preço;
 	}
 	
+	public void excluir() {
+		
+	}
 	
 	public void visualizar() {
 
@@ -52,7 +64,7 @@ public abstract class Eletronico {
 		System.out.println("Dados do Eletrônico:");
 		System.out.println("***********************************************************");
 		System.out.println("Numero do Eletrônico: " + this.numero);
-		System.out.println("Tipo da Conta: " + tipo);
+		System.out.println("Tipo do Eletrônico: " + tipo);
 		System.out.println("Nome: " + this.nome);
 		System.out.println("Preço: " + this.preço);
 	}

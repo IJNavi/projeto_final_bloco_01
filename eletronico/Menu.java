@@ -4,16 +4,22 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.util.InputMismatchException;
 
+import eletronico.controller.EletronicoController;
+import eletronico.model.Eletronico;
+import eletronico.model.Notebook;
 import eletronico.util.Cores;
 
 public class Menu {
 
 	public static void main(String[] args) {
+		
+		EletronicoController eletronicos = new EletronicoController();
 
 		Scanner leia = new Scanner(System.in);
 
-		int opcao, numero;
-		String nomeEletronico;
+		float preço;
+		int opcao, numero, tipo;
+		String nome, processador = "", placaDeVideo = "";
 
 		while (true) {
 
@@ -53,20 +59,50 @@ public class Menu {
 
 			switch (opcao) {
 			case 1:
-				System.out.println(Cores.TEXT_WHITE + "Criar Produto\n\n");
+				System.out.println(Cores.TEXT_WHITE + "Cadastrar Produto\n\n");
 
-				System.out.println("Digite o Número do eletrônico: ");
-				numero = leia.nextInt();
+
 				System.out.println("Digite o Nome do eletrônico: ");
 				leia.skip("\\R?");
-				nomeEletronico = leia.nextLine();
+				nome = leia.nextLine();
+				
+				// Para atualizações futuras.
+				/*
+				do {
+					System.out.println("Digite o Tipo da Conta (1- Notebook ou 2- Smartphone): ");
+					tipo = leia.nextInt();
+				} while (tipo < 1 && tipo > 2);
+				*/
 
+				tipo = 1;
+				
+				System.out.println("Digite o Preço (R$) do Eletrônico {Ex.: 00,00}: ");
+				preço = leia.nextFloat();
+				
+				switch (tipo) {
+				case 1 -> {
+					System.out.println("Digite o nome do Processador: ");
+					leia.skip("\\R?");
+					processador = leia.nextLine();
+					System.out.println("Digite o nome da Placa de vídeo: ");
+					leia.skip("\\R?");
+					placaDeVideo = leia.nextLine();
+					eletronicos.cadastrar(new Notebook(eletronicos.gerarNumero(), tipo, nome, preço, processador, placaDeVideo));
+				}/*
+				case 2 -> {
+					System.out.println("Digite o dia do Aniversário da Conta: ");
+					aniversario = leia.nextInt();
+					contas.cadastrar(
+							new ContaPoupança(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario));
+				}*/
+				}
+				
 				keyPress();
 
 				break;
 			case 2:
 				System.out.println(Cores.TEXT_WHITE + "Listar todas os Eletrônicos.\n\n");
-
+				eletronicos.listarTodos();
 				keyPress();
 
 				break;
@@ -75,16 +111,48 @@ public class Menu {
 
 				System.out.println("Digite o número do Eletrônico: ");
 				numero = leia.nextInt();
+				
+				eletronicos.procurarPorNumero(numero);
 
 				keyPress();
 				break;
 
 			case 4: {
-				System.out.println("Atualizar quantidade do produto.\n\n");
+				System.out.println("Atualizar dados do produto.\n\n");
 
 				System.out.println("Digite o número do Eletrônico: ");
 				numero = leia.nextInt();
 
+				var buscaEletronico = eletronicos.buscarNaCollection(numero);
+				if (buscaEletronico != null) {
+					
+					
+					System.out.println("Digite o Número do eletrônico: ");
+					numero = leia.nextInt();
+					
+					tipo = 1;
+					
+					System.out.println("Digite o Nome do Eletrônico: ");
+					leia.skip("\\R?");
+					nome = leia.nextLine();
+
+					System.out.println("Digite o Preço (R$) do Eletrônico {Ex.: 00,00}: ");
+					preço = leia.nextFloat();
+
+					System.out.println("Digite o Nome do Processador: ");
+					leia.skip("\\R?");
+					nome = leia.nextLine();
+					
+					System.out.println("Digite o Nome da Placa de Vídeo: ");
+					leia.skip("\\R?");
+					nome = leia.nextLine();
+					
+					eletronicos.atualizar(new Notebook(numero, tipo, nome, preço, processador, placaDeVideo));
+
+				} else {
+					System.out.println("O Eletrônico não foi encontrado!");
+				}
+				
 				keyPress();
 				break;
 			}
@@ -94,7 +162,8 @@ public class Menu {
 				System.out.println("Digite o número do eletrônico: ");
 				numero = leia.nextInt();
 
-
+				eletronicos.excluir(numero);
+				
 				keyPress();
 				break;
 
