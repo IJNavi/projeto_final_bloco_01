@@ -1,6 +1,6 @@
 package eletronico.model;
 
-public class Eletronico {
+public abstract class Eletronico {
 	
 	private int numero;
 	private int tipo;

@@ -45,7 +45,7 @@ public class Menu {
 
 			if (opcao == 6) {
 				System.out.println(
-						Cores.TEXT_WHITE_BOLD + "\nElétro100.K.O. - Evite K.O.! Eletronico é na Elétro100.K.O.");
+						Cores.TEXT_WHITE_BOLD + "\nElétro100.K.O. - Evite K.O.! Eletrônico é na Elétro100.K.O.");
 				sobre();
 				leia.close();
 				System.exit(0);
