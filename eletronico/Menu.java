@@ -13,7 +13,7 @@ public class Menu {
 		Scanner leia = new Scanner(System.in);
 
 		int opcao, numero;
-		String eletronico;
+		String nomeEletronico;
 
 		while (true) {
 
@@ -29,7 +29,7 @@ public class Menu {
 			System.out.println("           3 - Buscar produto por número.            ");
 			System.out.println("           4 - Atualizar dados do produto.           ");
 			System.out.println("           5 - Excluir produto.                      ");
-			System.out.println("           6 - Sair.		                         ");
+			System.out.println("           6 - Sair.		                     ");
 			System.out.println("                                                     ");
 			System.out.println("*****************************************************");
 			System.out.println("Entre com a opção desejada:                          ");
@@ -59,7 +59,7 @@ public class Menu {
 				numero = leia.nextInt();
 				System.out.println("Digite o Nome do eletrônico: ");
 				leia.skip("\\R?");
-				eletronico = leia.nextLine();
+				nomeEletronico = leia.nextLine();
 
 				keyPress();
 
@@ -109,9 +109,9 @@ public class Menu {
 
 	public static void sobre() {
 		System.out.println("\n**************************************************");
-		System.out.println("Projeto Desenvolvido por:                           ");
-		System.out.println("Ivan Barbosa - ivanjulio.ij@gmail.com               ");
-		System.out.println("github.com/IJNavi                                   ");
+		System.out.println("Projeto Desenvolvido por:                         ");
+		System.out.println("Ivan Barbosa - ivanjulio.ij@gmail.com             ");
+		System.out.println("github.com/IJNavi                                 ");
 		System.out.println("**************************************************");
 	}
 
